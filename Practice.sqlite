@@ -41,4 +41,68 @@ Job_code="0170";
 SELECT
 step
 FROM salary_range_by_job_classification
-WHERE Union_code=990 AND (setID IN ("SFMTA","COMMN"))
+WHERE Union_code=990 AND (setID IN ("SFMTA","COMMN"));
+
+
+
+
+
+
+
+
+
+/*https://ucde-rey.s3.amazonaws.com/DSV1015/ChinookDatabaseSchema.png*/
+SELECT
+COUNT(*) AS COUNT
+FROM tracks
+WHERE
+Milliseconds>=5000000;
+
+
+SELECT
+*
+FROM Invoices
+WHERE
+Total BETWEEN 5 AND 15;
+
+
+SELECT *
+FROM  Customers
+WHERE State IN ('RJ', 'DF', 'AB', 'BC', 'CA', 'WA', 'NY');
+
+
+SELECT *
+FROM Invoices
+WHERE
+(CustomerID IN (56,58) AND (Total BETWEEN 1 AND 5));
+
+
+SELECT *
+FROM  Tracks
+WHERE Name Like 'All%';
+
+SELECT *
+FROM Customers
+WHERE email LIKE 'J%gmail.com';
+
+SELECT *
+FROM Invoices
+WHERE BillingCity IN ('Brasília', 'Edmonton', 'Vancouver')
+ORDER BY InvoiceId DESC;
+
+
+SELECT CustomerId,
+COUNT(InvoiceId) AS COUNT
+FROM Invoices
+GROUP BY CustomerId
+ORDER BY COUNT DESC;
+
+
+SELECT AlbumId,COUNT(TrackId)
+FROM Tracks
+GROUP BY AlbumId
+HAVING COUNT(*)>=12;
+
+
+
+
