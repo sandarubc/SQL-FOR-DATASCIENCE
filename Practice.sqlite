@@ -1,0 +1,44 @@
+SELECT 
+distinct Extended_step
+FROM salary_range_by_job_classification;
+
+Select 
+"$"|| min(CAST(SUBSTR(Biweekly_high_Rate,2) AS INT)) ||".00"
+From salary_range_by_job_classification
+WHERE NOT Biweekly_high_Rate="$0.00";
+
+
+Select 
+"$"||MAX(CAST(SUBSTR(Biweekly_high_Rate,2) AS FLOAT))
+From salary_range_by_job_classification;
+
+
+Select
+job_code,
+pay_type
+FROM salary_range_by_job_classification
+GROUP BY job_code HAVING job_code LIKE'03%';
+
+SELECT
+*
+FROM salary_range_by_job_classification
+ORDER BY Biweekly_Low_Rate;
+
+SELECT
+Step
+FROM salary_range_by_job_classification
+WHERE Job_code
+BETWEEN
+"0110" AND "0400";
+
+SELECT
+CAST(substr(Biweekly_High_Rate,2) AS FLOAT)-CAST(substr(Biweekly_Low_Rate,2) AS FLOAT)
+FROM salary_range_by_job_classification
+WHERE
+Job_code="0170";
+
+
+SELECT
+step
+FROM salary_range_by_job_classification
+WHERE Union_code=990 AND (setID IN ("SFMTA","COMMN"))
