@@ -1,1 +1,43 @@
+SELECT name
+FROM tracks
+WHERE AlbumId=(SELECT AlbumId
+                FROM Albums
+                WHERE title="Californication");
+                
+                
+                
+SELECT count(*) AS Count,customers.firstName,customers.Lastname,Customers.city,Customers.email
+FROM invoices INNER JOIN customers
+ON invoices.CustomerId=Customers.CustomerId
+GROUP BY invoices.CustomerId;
 
+
+SELECT tracks.name,albums.Title,albums.artistId,tracks.trackId
+FROM tracks INNER JOIN Albums
+ON tracks.albumId=albums.albumId;
+
+
+SELECT m.lastName AS m,
+        e.lastName  AS e
+FROM Employees e 
+INNER JOIN Employees m
+ON M.EmployeeId=E.reportsTo
+ORDER BY M.lastName;
+
+
+SELECT name,ArtistId
+FROM Artists
+WHERE ArtistId NOT IN(SELECT ArtistId
+                        FROM Albums);
+SELECT firstName,LastName
+From Employees
+UNION
+SELECT firstName, LastName
+FROM Customers
+ORDER BY LastName DESC;
+
+
+SELECT customers.FirstName,customers.LastName
+FROM customers INNER JOIN Invoices
+ON Invoices.customerId=customers.customerId
+Where customers.city<>Invoices.BillingCity;
